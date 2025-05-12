@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+
+  <meta charset="utf-8">
+  <meta name="author" content="Mateus Viana">
+  <meta name="description" content="Perfil pessoal aluno Mateus Viana, matrícula - 2024.0817.4021">
+  <meta name = "keywords" content="auto, biografia, pessoal, perfil">
+  <meta name = "viewport" content="width=device-widht, initial-scale=1.0">
+  <title>Formulário de Contato</title>
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .caixa{
+      background-color: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgb(0, 238, 255);
+      width: 300px;
+    }
+
+    .caixa h2 {
+      text-align: center;
+      color: rgb(6, 0, 85);
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: rgb(0, 238, 255);
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    
+    .mensagem {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .success {
+      color: rgb(21, 255, 0);
+    }
+
+    .error {
+      color: rgb(255, 9, 9);
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <div class="caixa">
+    <h2>Formulário de Contato</h2>
+    <form id="contactForm">
+      <input type="text" id="nome" placeholder="Nome">
+      <input type="email" id="email" placeholder="Email">
+      <textarea id="mensagem" rows="4" placeholder="Sua mensagem..."></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <div class="mensagem" id="formMensagem"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const messageBox = document.getElementById('formMensagem');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('mensagem').value.trim();
+
+      
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (!name || !email || !message) {
+        messageBox.textContent = 'Por favor, preencha todos os campos.';
+        messageBox.className = 'message error';
+      } else if (!emailPattern.test(email)) {
+        messageBox.textContent = 'Por favor, insira um email válido.';
+        messageBox.className = 'message error';
+      } else {
+        messageBox.textContent = 'Mensagem enviada com sucesso!';
+        messageBox.className = 'message success';
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
